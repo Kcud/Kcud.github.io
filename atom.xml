@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2020-05-20T08:11:49.348Z</updated>
+    <updated>2020-06-19T12:18:19.402Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[读]]></title>
+        <id>https://kcud.github.io/post/du/</id>
+        <link href="https://kcud.github.io/post/du/">
+        </link>
+        <updated>2020-06-19T12:15:26.000Z</updated>
+        <content type="html"><![CDATA[<p>An app is a &quot;software application&quot; developed for use on</p>
+<p>mobile devices such as smart phones and tablet computers.Apps have become an integral part of our life. Most of usprobably can hardly imagine living without the apps. After all,it is really convenient to have a device that can e-mail, text,chat, video, order food, watch TV, bank online, and the listgoes on and on. However, when discussing these apps thathave brought what used to be &quot;computer based&quot; technologyto the palm of our hands, people argue a lot. It is easier, nowmore than ever, for us to be distracted. A recent study</p>
+<p>indicated that the average owner of a smart phone checkstheir their devices 87 times dailv remember to use them wisely</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[英语2]]></title>
         <id>https://kcud.github.io/post/ying-yu-2/</id>
