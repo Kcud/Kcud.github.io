@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Word | 花花的小窝</title>
+<title>Ajax | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,14 +81,119 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Hello Word</h1>
+            <h1>Ajax</h1>
             <p class="article-meta">
-              2020-07-31
+              2022-01-16
               
             </p>
             
             <div class="post-content">
-              <p>Hello Word</p>
+              <h1 id="spring-下的-ajax"><strong>Spring 下的 Ajax</strong></h1>
+<h1 id="code">code</h1>
+<pre><code class="language-java">//User
+
+public class User {
+    private String name;
+    private String sex;
+    //省略get set toString 方法
+}
+
+</code></pre>
+<p>要添加spring依赖</p>
+<pre><code class="language-java">//Controller类
+@Controller
+@RequestMapping(&quot;/ajax&quot;)
+public class AjaxController {
+    //第一种方式，服务器要返回一个字符串，直接使用response
+    @RequestMapping(&quot;/a1&quot;)
+    public void ajax1(String name, HttpServletResponse response){
+        try{
+            if(&quot;admin&quot;.equals(name)){
+                response.getWriter().print(&quot;true&quot;);
+            }else{
+                response.getWriter().print(&quot;false&quot;);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @RequestMapping(&quot;/a2&quot;)
+    @ResponseBody
+    public List a2(){
+        List&lt;User&gt; list = new ArrayList&lt;User&gt;();
+        User user = new User();
+        user.setName(&quot;Flower&quot;);
+        user.setSex(&quot;male&quot;);
+        list.add(user);
+        return list;
+    }
+}
+</code></pre>
+<p>导入jquery.js文件</p>
+<pre><code class="language-javascript">//方法1：导入本地文件
+&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.js&quot;&gt;&lt;/script&gt;	 
+/*不要使用&lt;script/&gt;自闭合*/
+
+//方法2：使用http资源
+&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="language-javascript">function a1(){
+	$.ajax({
+		type:&quot;Post&quot;,	//.ajax默认为Get请求	可以通过type修改请求方式 更常用$.post
+		url:&quot;${pageContext.request.contextPath}/ajax/a1&quot;,
+		data:{&quot;name&quot;:$(txtName).val()},
+		success(data){
+		console.log(data);
+		}
+});
+</code></pre>
+<pre><code class="language-javascript">function a2(){
+	var html=&quot;&quot;;
+
+	$.ajax({
+		url:&quot;${pageContext.request.contextPath}/ajax/a2&quot;,
+		success(data){
+            var html = &quot;&quot;;
+            console.log(data);
+            for(var i = 0; i&lt; data.length; i++){
+                html  += &quot;&lt;tr&gt;&quot;+
+                &quot;&lt;td&gt;&quot;+data[i].name+&quot;&lt;/td&gt;&quot;+
+                &quot;&lt;td&gt;&quot;+data[i].sex+&quot;&lt;/td&gt;&quot;+
+                &quot;&lt;/tr&gt;&quot;;
+            }
+            $(&quot;#tableBody&quot;).html(html);
+        }
+    });
+}
+
+</code></pre>
+<h3 id="找不到jquery文件"><strong>找不到jquery文件</strong></h3>
+<p><strong>错误表现</strong></p>
+<pre><code class="language-java">GET http://localhost:8080/ajax_war_exploded/statics/js/jquery-3.6.0.js net::ERR_ABORTED 404
+</code></pre>
+<pre><code class="language-html">&lt;!--在springmvc-config.xmlspringmvc-config.xml添加 js没找到--&gt;
+&lt;mvc:resources location=&quot;/statics/js/&quot; mapping=&quot;/statics/js/**&quot;&gt;&lt;/mvc:resources&gt;
+</code></pre>
+<h3 id="json数据获取失败"><strong>json数据获取失败</strong></h3>
+<p><strong>错误表现</strong></p>
+<img src="https://note.youdao.com/yws/api/personal/file/561D585033374F4A9C55763445E1494A?method=download&shareKey=9b387214ab725842e33981b6cc8f3256"/>
+<h3 id=""></h3>
+<pre><code class="language-html">@ResponseBody 转json数据失败 在pom.xml添加依赖--&gt;
+&lt;dependency&gt;
+      &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
+      &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
+      &lt;version&gt;2.13.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="ajaxa2访问404"><strong>/ajax/a2访问404</strong></h3>
+<p><strong>错误表现</strong></p>
+<img src="https://note.youdao.com/yws/api/personal/file/B421096406464C4CBED4ABE1198DE78F?method=download&shareKey=bfdc8aab9567f691c5e8954a7f217c4a"/>
+<pre><code class="language-html">&lt;!--在springmvc-config.xmlspringmvc-config.xml添加--&gt;&lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
+</code></pre>
+<h1 id="故障再现">故障再现</h1>
+<h3 id="移出maven后包缓存仍在项目中">移出maven后包缓存仍在项目中</h3>
+<p>maven-&gt;生命周期-&gt;clean</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/20E77A41283F4C778634E0FB2EF8D2E3?method=download&shareKey=03ebca3d791afbc3d923bda922bdd349"/><img src="https://note.youdao.com/yws/api/personal/file/A16326019E874275A5DB210D347B6D5B?method=download&shareKey=08a88d872e8d268bb5ec55c3acec8397"/></p>
 
             </div>
           </article>
@@ -99,9 +204,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://kcud.github.io/post/xue-sheng-guan-li-xi-tong-c-yu-yan/">
+              <a href="https://kcud.github.io/post/ying-yu-3/">
                 <h3 class="post-title">
-                  学生管理系统 C语言
+                  英语3
                 </h3>
               </a>
             </div>
@@ -204,7 +309,7 @@
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge ">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
           Gridea
         </a>
       
