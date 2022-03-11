@@ -1,22 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://kcud.github.io/</id>
-    <title>花花的小窝</title>
-    <updated>2022-03-11T15:17:17.256Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://kcud.github.io/"/>
-    <link rel="self" href="https://kcud.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
-    <logo>https://kcud.github.io/images/avatar.png</logo>
-    <icon>https://kcud.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, 花花的小窝</rights>
-    <entry>
-        <title type="html"><![CDATA[项目管理]]></title>
-        <id>https://kcud.github.io/post/xiang-mu-guan-li/</id>
-        <link href="https://kcud.github.io/post/xiang-mu-guan-li/">
-        </link>
-        <updated>2022-03-11T15:14:42.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="第一章-软件项目管理概述">第一章 软件项目管理概述</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>项目管理 | 花花的小窝</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://kcud.github.io//favicon.ico?v=1647011828294">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://kcud.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>项目管理</h1>
+            <p class="article-meta">
+              2022-03-11
+              
+            </p>
+            
+            <div class="post-content">
+              <h1 id="第一章-软件项目管理概述">第一章 软件项目管理概述</h1>
 <h3 id="项目">项目</h3>
 <ul>
 <li>定义<br>
@@ -381,161 +453,117 @@
 </tr>
 </tbody>
 </table>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ajax]]></title>
-        <id>https://kcud.github.io/post/ajax/</id>
-        <link href="https://kcud.github.io/post/ajax/">
-        </link>
-        <updated>2022-01-16T15:09:41.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="spring-下的-ajax"><strong>Spring 下的 Ajax</strong></h1>
-<h1 id="code">code</h1>
-<pre><code class="language-java">//User
 
-public class User {
-    private String name;
-    private String sex;
-    //省略get set toString 方法
-}
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/ajax/">
+                <h3 class="post-title">
+                  Ajax
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
 
-</code></pre>
-<p>要添加spring依赖</p>
-<pre><code class="language-java">//Controller类
-@Controller
-@RequestMapping(&quot;/ajax&quot;)
-public class AjaxController {
-    //第一种方式，服务器要返回一个字符串，直接使用response
-    @RequestMapping(&quot;/a1&quot;)
-    public void ajax1(String name, HttpServletResponse response){
-        try{
-            if(&quot;admin&quot;.equals(name)){
-                response.getWriter().print(&quot;true&quot;);
-            }else{
-                response.getWriter().print(&quot;false&quot;);
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @RequestMapping(&quot;/a2&quot;)
-    @ResponseBody
-    public List a2(){
-        List&lt;User&gt; list = new ArrayList&lt;User&gt;();
-        User user = new User();
-        user.setName(&quot;Flower&quot;);
-        user.setSex(&quot;male&quot;);
-        list.add(user);
-        return list;
-    }
-}
-</code></pre>
-<p>导入jquery.js文件</p>
-<pre><code class="language-javascript">//方法1：导入本地文件
-&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.js&quot;&gt;&lt;/script&gt;	 
-/*不要使用&lt;script/&gt;自闭合*/
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://kcud.github.io//images/avatar.png?v=1647011828294" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/xiang-mu-guan-li/">项目管理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/ajax/">Ajax</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/hello/">Hello</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/hello-gridea/">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
-//方法2：使用http资源
-&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-<pre><code class="language-javascript">function a1(){
-	$.ajax({
-		type:&quot;Post&quot;,	//.ajax默认为Get请求	可以通过type修改请求方式 更常用$.post
-		url:&quot;${pageContext.request.contextPath}/ajax/a1&quot;,
-		data:{&quot;name&quot;:$(txtName).val()},
-		success(data){
-		console.log(data);
-		}
-});
-</code></pre>
-<pre><code class="language-javascript">function a2(){
-	var html=&quot;&quot;;
 
-	$.ajax({
-		url:&quot;${pageContext.request.contextPath}/ajax/a2&quot;,
-		success(data){
-            var html = &quot;&quot;;
-            console.log(data);
-            for(var i = 0; i&lt; data.length; i++){
-                html  += &quot;&lt;tr&gt;&quot;+
-                &quot;&lt;td&gt;&quot;+data[i].name+&quot;&lt;/td&gt;&quot;+
-                &quot;&lt;td&gt;&quot;+data[i].sex+&quot;&lt;/td&gt;&quot;+
-                &quot;&lt;/tr&gt;&quot;;
-            }
-            $(&quot;#tableBody&quot;).html(html);
-        }
-    });
-}
+    </div>
 
-</code></pre>
-<h3 id="找不到jquery文件"><strong>找不到jquery文件</strong></h3>
-<p><strong>错误表现</strong></p>
-<pre><code class="language-java">GET http://localhost:8080/ajax_war_exploded/statics/js/jquery-3.6.0.js net::ERR_ABORTED 404
-</code></pre>
-<pre><code class="language-html">&lt;!--在springmvc-config.xmlspringmvc-config.xml添加 js没找到--&gt;
-&lt;mvc:resources location=&quot;/statics/js/&quot; mapping=&quot;/statics/js/**&quot;&gt;&lt;/mvc:resources&gt;
-</code></pre>
-<h3 id="json数据获取失败"><strong>json数据获取失败</strong></h3>
-<p><strong>错误表现</strong></p>
-<img src="https://note.youdao.com/yws/api/personal/file/561D585033374F4A9C55763445E1494A?method=download&shareKey=9b387214ab725842e33981b6cc8f3256"/>
-<h3 id=""></h3>
-<pre><code class="language-html">@ResponseBody 转json数据失败 在pom.xml添加依赖--&gt;
-&lt;dependency&gt;
-      &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;
-      &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;
-      &lt;version&gt;2.13.0&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h3 id="ajaxa2访问404"><strong>/ajax/a2访问404</strong></h3>
-<p><strong>错误表现</strong></p>
-<img src="https://note.youdao.com/yws/api/personal/file/B421096406464C4CBED4ABE1198DE78F?method=download&shareKey=bfdc8aab9567f691c5e8954a7f217c4a"/>
-<pre><code class="language-html">&lt;!--在springmvc-config.xmlspringmvc-config.xml添加--&gt;&lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt;
-</code></pre>
-<h1 id="故障再现">故障再现</h1>
-<h3 id="移出maven后包缓存仍在项目中">移出maven后包缓存仍在项目中</h3>
-<p>maven-&gt;生命周期-&gt;clean</p>
-<p><img src="https://note.youdao.com/yws/api/personal/file/20E77A41283F4C778634E0FB2EF8D2E3?method=download&shareKey=03ebca3d791afbc3d923bda922bdd349"/><img src="https://note.youdao.com/yws/api/personal/file/A16326019E874275A5DB210D347B6D5B?method=download&shareKey=08a88d872e8d268bb5ec55c3acec8397"/></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello]]></title>
-        <id>https://kcud.github.io/post/hello/</id>
-        <link href="https://kcud.github.io/post/hello/">
-        </link>
-        <updated>2020-05-07T07:50:25.000Z</updated>
-        <content type="html"><![CDATA[<p>阿里云的服务器到期了现在改用这个嘿嘿</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://kcud.github.io/post/hello-gridea/</id>
-        <link href="https://kcud.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
-    </entry>
-</feed>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
