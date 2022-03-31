@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Gridea | 花花的小窝</title>
+<title>Python 打包 | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
@@ -79,42 +80,50 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: Gridea</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://kcud.github.io/post/hello-gridea/">Hello Gridea</a>
-    </h2>
-    <p class="article-meta">
-      2018-12-12
-      
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
-          Gridea
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+          <article class="article">
+            <h1>Python 打包</h1>
+            <p class="article-meta">
+              2022-03-31
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="打包exe">打包exe</h2>
+<pre><code>下载依赖
+</code></pre>
+<pre><code class="language-python">pip install pyinstaller
+</code></pre>
+<pre><code>命令
+</code></pre>
+<pre><code class="language-python">pyinstaller -F -W 程序入口的py文件 #整个打包 不带控制台
+pyinstaller -D -C 程序入口的py文件 #打包成文件夹 带控制台
+pyinstaller -D -C -I icon文件路径 程序入口的py文件 #打包成文件夹 带控制台
+</code></pre>
+<pre><code>问题
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/60F87E27BFE84C4F809792A5F0EDF9B1?method=download&amp;shareKey=f854293f5f0449a7ee0e5b11190046bf" alt="" loading="lazy"></figure>
+<p>检查程序所依赖的外部文件 如：图片、配置文件打包目录是否存在</p>
 
-    </p>
-    <div class="row">
-      <a href="https://kcud.github.io/post/hello-gridea/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/xiang-mu-guan-li/">
+                <h3 class="post-title">
+                  项目管理
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://kcud.github.io//images/avatar.png?v=1648693606015" class="no-responsive avatar">
@@ -185,7 +194,7 @@
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge success">
           Gridea
         </a>
       
@@ -195,6 +204,7 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 
