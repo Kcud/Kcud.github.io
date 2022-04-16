@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-03-31T02:29:45.661Z</updated>
+    <updated>2022-04-16T08:18:15.294Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[pyqt5 基于  Qt Designer 创建可视化GUI程序]]></title>
+        <id>https://kcud.github.io/post/pyqt5-ji-yu-qt-designer-chuang-jian-ke-shi-hua-gui-cheng-xu/</id>
+        <link href="https://kcud.github.io/post/pyqt5-ji-yu-qt-designer-chuang-jian-ke-shi-hua-gui-cheng-xu/">
+        </link>
+        <updated>2022-04-16T08:17:55.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="pyqt5-基于-qt-designer-创建可视化gui程序">pyqt5 基于  Qt Designer 创建可视化GUI程序</h2>
+<p>下载依赖</p>
+<pre><code class="language-python">pip install pyqt5-tools
+</code></pre>
+<pre><code class="language-python">from PyQt5.Qt import *
+from PyQt5 import uic
+class Stats:
+
+    def __init__(self):
+        # 从文件中加载UI定义
+        self.ui = uic.loadUi(&quot;../ui/main.ui&quot;) #要加载的ui文件
+app = QApplication([])
+stats = Stats()
+stats.ui.show()
+app.exec_()
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python 打包]]></title>
         <id>https://kcud.github.io/post/python-da-bao/</id>
