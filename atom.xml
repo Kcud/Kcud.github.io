@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-04-26T13:42:09.577Z</updated>
+    <updated>2022-04-26T13:42:47.751Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -67,6 +67,30 @@ stats = Stats()
 stats.ui.show()
 app.exec_()
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python 打包]]></title>
+        <id>https://kcud.github.io/post/python-da-bao/</id>
+        <link href="https://kcud.github.io/post/python-da-bao/">
+        </link>
+        <updated>2022-03-31T02:24:57.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="打包exe">打包exe</h2>
+<pre><code>下载依赖
+</code></pre>
+<pre><code class="language-python">pip install pyinstaller
+</code></pre>
+<pre><code>命令
+</code></pre>
+<pre><code class="language-python">pyinstaller -F -w 程序入口的py文件 #整个打包 不带控制台
+pyinstaller -D -c 程序入口的py文件 #打包成文件夹 带控制台
+pyinstaller -D -c -i 图标文件路径扩展名为.ico 程序入口的py文件 #打包成文件夹 带控制台
+pyinstaller -F -w -i 图标文件路径扩展名为.ico 程序入口的py文件 #打包成exe 不带控制台
+</code></pre>
+<pre><code>问题
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/60F87E27BFE84C4F809792A5F0EDF9B1?method=download&amp;shareKey=f854293f5f0449a7ee0e5b11190046bf" alt="" loading="lazy"></figure>
+<p>检查程序所依赖的外部文件 如：图片、配置文件打包目录是否存在</p>
 ]]></content>
     </entry>
     <entry>
