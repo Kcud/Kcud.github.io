@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-04-17T11:36:46.607Z</updated>
+    <updated>2022-04-26T13:42:09.577Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[git]]></title>
+        <id>https://kcud.github.io/post/git/</id>
+        <link href="https://kcud.github.io/post/git/">
+        </link>
+        <updated>2022-04-26T13:40:24.000Z</updated>
+        <content type="html"><![CDATA[<p>git push -u origin master</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[inno setup 打包exe安装包]]></title>
         <id>https://kcud.github.io/post/inno-setup-da-bao-exe-an-zhuang-bao/</id>
@@ -58,29 +67,6 @@ stats = Stats()
 stats.ui.show()
 app.exec_()
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python 打包]]></title>
-        <id>https://kcud.github.io/post/python-da-bao/</id>
-        <link href="https://kcud.github.io/post/python-da-bao/">
-        </link>
-        <updated>2022-03-31T02:24:57.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="打包exe">打包exe</h2>
-<pre><code>下载依赖
-</code></pre>
-<pre><code class="language-python">pip install pyinstaller
-</code></pre>
-<pre><code>命令
-</code></pre>
-<pre><code class="language-python">pyinstaller -F -W 程序入口的py文件 #整个打包 不带控制台
-pyinstaller -D -C 程序入口的py文件 #打包成文件夹 带控制台
-pyinstaller -D -C -I icon文件路径 程序入口的py文件 #打包成文件夹 带控制台
-</code></pre>
-<pre><code>问题
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/60F87E27BFE84C4F809792A5F0EDF9B1?method=download&amp;shareKey=f854293f5f0449a7ee0e5b11190046bf" alt="" loading="lazy"></figure>
-<p>检查程序所依赖的外部文件 如：图片、配置文件打包目录是否存在</p>
 ]]></content>
     </entry>
     <entry>
