@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-04-26T13:43:19.652Z</updated>
+    <updated>2022-05-04T08:23:25.788Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[Python pip 时由于目标计算机积极拒绝,无法连接]]></title>
+        <id>https://kcud.github.io/post/python-pip-shi-you-yu-mu-biao-ji-suan-ji-ji-ji-ju-jue-wu-fa-lian-jie/</id>
+        <link href="https://kcud.github.io/post/python-pip-shi-you-yu-mu-biao-ji-suan-ji-ji-ji-ju-jue-wu-fa-lian-jie/">
+        </link>
+        <updated>2022-05-04T08:14:08.000Z</updated>
+        <content type="html"><![CDATA[<p>1、按Win+R快捷键，输入regedit，打开注册表编辑器</p>
+<p>2、找到HKEY_CURRENT_USER/Software/Microsoft/Windows/CurrentVersion/Internet Settings</p>
+<p>3、将以 Proxy 打头的键值对（如ProxyEnable，ProxyOverride，ProxyServer等）全部删除</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git]]></title>
         <id>https://kcud.github.io/post/git/</id>
