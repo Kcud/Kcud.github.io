@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-05-07T10:54:17.411Z</updated>
+    <updated>2022-05-08T07:50:33.115Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[Cpolar 实现内网穿透]]></title>
+        <id>https://kcud.github.io/post/cpolar-shi-xian-nei-wang-chuan-tou/</id>
+        <link href="https://kcud.github.io/post/cpolar-shi-xian-nei-wang-chuan-tou/">
+        </link>
+        <updated>2022-05-08T07:50:17.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="使用-cpolar-实现内网穿透">使用 Cpolar 实现内网穿透</h2>
+<p><a herf = "https://www.cpolar.com/download">下载地址</a></p>
+<p>下载完成后</p>
+<img src="https://note.youdao.com/yws/api/personal/file/8C0925D66F9E4254BC01769BEC56ED19?method=download&shareKey=f70228df8a9ecec32258bd3da19f6f1c"/>
+<img src="https://note.youdao.com/yws/api/personal/file/4CE1B10730154B918D6AA07E250EF31B?method=download&shareKey=f70228df8a9ecec32258bd3da19f6f1c"/>
+<img src="https://note.youdao.com/yws/api/personal/file/ECCC9BFB86E440EE8CD26559B4F947C2?method=download&shareKey=f70228df8a9ecec32258bd3da19f6f1c"/>
+<img src="https://note.youdao.com/yws/api/personal/file/15BEC6C843FA41298462DAC642DAE2B2?method=download&shareKey=f70228df8a9ecec32258bd3da19f6f1c"/>
+<img src="https://note.youdao.com/yws/api/personal/file/43838C7C4A74482ABADC80357016A7E9?method=download&shareKey=f70228df8a9ecec32258bd3da19f6f1c"/>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Python pip 时由于目标计算机积极拒绝,无法连接]]></title>
         <id>https://kcud.github.io/post/python-pip-shi-you-yu-mu-biao-ji-suan-ji-ji-ji-ju-jue-wu-fa-lian-jie/</id>
