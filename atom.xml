@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-05-10T10:39:36.061Z</updated>
+    <updated>2022-05-27T15:17:50.556Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,103 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[ REST 风格]]></title>
+        <id>https://kcud.github.io/post/rest-feng-ge/</id>
+        <link href="https://kcud.github.io/post/rest-feng-ge/">
+        </link>
+        <updated>2022-05-27T15:17:28.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="rest-风格">REST 风格</h1>
+<h2 id="请求工具">请求工具</h2>
+<p><a href="https://www.postman.com/">postman</a></p>
+<p>传统描述</p>
+<pre><code class="language-http">http://localhost/user/getById?id=1
+http://localhost/user/saveUser
+</code></pre>
+<p>REST 描述</p>
+<pre><code class="language-http">http://localhost/user/1		
+http://localhost/user
+</code></pre>
+<p>隐藏 行为</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>查询</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>( 新增/保存 )</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>修改</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">@RequestMapping(value=&quot;/users&quot;, method = RequestMethod.POST)
+
+@RequestMapping(value=&quot;/users/{id}&quot;, method = RequestMethod.DELETE)
+@ResponseBody
+public String delete(@PathVariable Integer id){		//增加 PathVariable 注解
+  //....
+  return &quot;{'xxxx':'xxx'}&quot;;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>功能</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@ResponseBody</td>
+<td>用于接收json数据</td>
+<td>数据多</td>
+</tr>
+<tr>
+<td>@RequestParam</td>
+<td>用于接收url地址参数或表单</td>
+<td>使用的少</td>
+</tr>
+<tr>
+<td>@PathVariable</td>
+<td>用于接收地址参数 {参数名称}</td>
+<td>数据少</td>
+</tr>
+</tbody>
+</table>
+<h2 id="简化">简化</h2>
+<p>去除重复的value</p>
+<pre><code class="language-java">//在类名使用
+@RequestMapping(&quot;xxxs&quot;)
+@@ResponseBody
+@RestController	//使用这个注解 @Controller 和 @ResponeBody 可以不再写 
+
+//修改 删除
+@RequestMapping(value=&quot;/{id}&quot;, method = RequestMethod.DELETE)
+//可以简写为
+@DeleteMapping(&quot;/{id}&quot;)
+
+@RequestMapping( method = RequestMethod.POST)
+//修改为
+@PostMapping
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Cpolar 实现内网穿透]]></title>
         <id>https://kcud.github.io/post/cpolar-shi-xian-nei-wang-chuan-tou/</id>
@@ -613,38 +710,6 @@ public class AjaxController {
         </link>
         <updated>2020-05-07T07:50:25.000Z</updated>
         <content type="html"><![CDATA[<p>阿里云的服务器到期了现在改用这个嘿嘿</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://kcud.github.io/post/hello-gridea/</id>
-        <link href="https://kcud.github.io/post/hello-gridea/">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
 ]]></content>
     </entry>
 </feed>

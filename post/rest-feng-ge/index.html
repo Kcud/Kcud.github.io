@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | 花花的小窝</title>
+<title> REST 风格 | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
@@ -79,20 +80,124 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1> REST 风格</h1>
+            <p class="article-meta">
+              2022-05-27
+              
+            </p>
             
-              <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge ">
-                工具
-              </a>
-            
-              <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
-                Gridea
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <h1 id="rest-风格">REST 风格</h1>
+<h2 id="请求工具">请求工具</h2>
+<p><a href="https://www.postman.com/">postman</a></p>
+<p>传统描述</p>
+<pre><code class="language-http">http://localhost/user/getById?id=1
+http://localhost/user/saveUser
+</code></pre>
+<p>REST 描述</p>
+<pre><code class="language-http">http://localhost/user/1		
+http://localhost/user
+</code></pre>
+<p>隐藏 行为</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td>查询</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>( 新增/保存 )</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>修改</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">@RequestMapping(value=&quot;/users&quot;, method = RequestMethod.POST)
+
+@RequestMapping(value=&quot;/users/{id}&quot;, method = RequestMethod.DELETE)
+@ResponseBody
+public String delete(@PathVariable Integer id){		//增加 PathVariable 注解
+  //....
+  return &quot;{'xxxx':'xxx'}&quot;;
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>功能</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@ResponseBody</td>
+<td>用于接收json数据</td>
+<td>数据多</td>
+</tr>
+<tr>
+<td>@RequestParam</td>
+<td>用于接收url地址参数或表单</td>
+<td>使用的少</td>
+</tr>
+<tr>
+<td>@PathVariable</td>
+<td>用于接收地址参数 {参数名称}</td>
+<td>数据少</td>
+</tr>
+</tbody>
+</table>
+<h2 id="简化">简化</h2>
+<p>去除重复的value</p>
+<pre><code class="language-java">//在类名使用
+@RequestMapping(&quot;xxxs&quot;)
+@@ResponseBody
+@RestController	//使用这个注解 @Controller 和 @ResponeBody 可以不再写 
+
+//修改 删除
+@RequestMapping(value=&quot;/{id}&quot;, method = RequestMethod.DELETE)
+//可以简写为
+@DeleteMapping(&quot;/{id}&quot;)
+
+@RequestMapping( method = RequestMethod.POST)
+//修改为
+@PostMapping
+</code></pre>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/cpolar-shi-xian-nei-wang-chuan-tou/">
+                <h3 class="post-title">
+                  Cpolar 实现内网穿透
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://kcud.github.io//images/avatar.png?v=1653664666896" class="no-responsive avatar">
@@ -195,7 +300,7 @@
           工具
         </a>
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
           Gridea
         </a>
       
@@ -205,7 +310,8 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
