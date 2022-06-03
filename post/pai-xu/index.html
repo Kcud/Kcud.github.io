@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | 花花的小窝</title>
+<title>排序 | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
@@ -79,28 +80,87 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>排序</h1>
+            <p class="article-meta">
+              2022-06-03
+              
+            </p>
             
-              <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge secondary">
-                web
-              </a>
-            
-              <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge secondary">
-                工具
-              </a>
-            
-              <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge secondary">
-                python
-              </a>
-            
-              <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge success">
-                Gridea
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <p>快速排序</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+
+void quick_sort(int *array, int l, int r)
+{
+    int left =l;                //获取左下标 右下标
+    int right = r;
+    int pivot = array[left];    //对比用的标记
+    if(left &gt;= right)           // 如果 左下标 &gt;= 右下标 则此区域排序结束
+        return;
+    while(left &lt; right)         //如果 左下标 小于 右下标
+    {
+        while(left &lt; right &amp;&amp; array[right] &gt;= pivot)    //在(left,right]区间 找到一个 小于 标记的数
+        {
+            right--;
+        }
+        if(left &lt; right)                                //判断是否 left right 是否合法
+        {
+            array[left] = array[right];                 //将小于 标记的数 放到数组的左边
+        }
+        while(left &lt; right &amp;&amp; array[left] &lt;= pivot)     //在(left,right]区间 找到一个 大于 标记的数
+        {
+            left++;
+        }
+        if(left &lt; right)                                //判断是否 left right 是否合法
+        {
+            array[right] = array[left];                 //将大于 标记的数 放到数组的右边
+        }
+        if(left == right)                               //当 left 与 right 重合
+        {
+            array[left] = pivot;                        // 将 标记数 移动到 重合的位置
+        }
+    }
+    quick_sort(array,l,right-1);                        //递归 排序左右子区间
+    quick_sort(array,right+1,r);
+
+}
+
+int main()
+{
+    int a[10],i;
+    for(i = 0; i &lt; 10; i++)
+        scanf(&quot;%d&quot;,&amp;a[i]);
+    quick_sort(a,0,9);
+    for(i = 0; i &lt; 10; i++)
+        printf(&quot;%d &quot;,a[i]);
+    return 0;
+}
+
+</code></pre>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/rest-feng-ge/">
+                <h3 class="post-title">
+                   REST 风格
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://kcud.github.io//images/avatar.png?v=1654267486678" class="no-responsive avatar">
@@ -201,11 +261,11 @@
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge warning">
+        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge secondary">
           web
         </a>
       
-        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge warning">
           工具
         </a>
       
@@ -213,7 +273,7 @@
           python
         </a>
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge success">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
           Gridea
         </a>
       
@@ -223,7 +283,8 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
