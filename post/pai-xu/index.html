@@ -7,7 +7,7 @@
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://kcud.github.io//favicon.ico?v=1654267925556">
+<link rel="shortcut icon" href="https://kcud.github.io//favicon.ico?v=1654318301255">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -85,7 +85,7 @@
             <p class="article-meta">
               2022-06-03
               
-                <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge success">
+                <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
                   C
                 </a>
               
@@ -144,6 +144,111 @@ int main()
 }
 
 </code></pre>
+<p>插入排序</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void insert_sort(int *array, int array_len)
+{
+    int i, j, key_number;
+    for(i = 1; i &lt; array_len; i++)          //外循环 元素为1时默认有序 所以下标从 1 开始
+    {
+        key_number = array[i];              //将 i 上的值作为待排序值
+        j = i - 1;                          //我们要将 待排序值 插入到 [0,i-1] 的位置上
+        while(j &gt;= 0 &amp;&amp; array[j] &gt; key_number)  //找到比待插入值小的值
+        {
+            array[j+1] = array[j];
+            j--;
+        }
+        array[j+1] = key_number;  //将待插入值 插入 因为 while 循环每次会 j-- 所以我们离正确的插入位置少了1
+    }
+}
+
+
+int main()
+{
+
+    int a[10] = {1,4,7,2,5,8,3,6,9}, i;
+    insert_sort(a,9);
+    for(i = 0; i &lt; 9; i++)
+        printf(&quot;%d &quot;,a[i]);
+}
+
+</code></pre>
+<p>归并排序</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void merge(int * array, int * temp_array, int left, int mid, int right) //合并
+{
+    int left_flag, right_flag, temp_index;
+    left_flag = left;       //左半区第一个元素
+    right_flag = mid + 1;   //右半区第一个元素
+    temp_index = left;		//临时数组的下标
+    while(left_flag &lt;= mid &amp;&amp; right_flag &lt;= right)	//将左半区和右半区的数组合并到 temp_array
+    {
+        if(array[left_flag] &lt; array[right_flag])
+        {
+            temp_array[temp_index] = array[left_flag];
+            left_flag++;
+        }
+        else
+        {
+            temp_array[temp_index] = array[right_flag];
+            right_flag++;
+        }
+        temp_index++;
+    }
+    while(left_flag &lt;= mid)						//如果左半区还有剩余元素依次合并到 temp_array
+    {
+        temp_array[temp_index] = array[left_flag];
+        left_flag++;
+        temp_index++;
+    }
+    while(right_flag &lt;= right)					//如果右半区还有剩余元素依次合并到 temp_array
+    {
+        temp_array[temp_index] = array[right_flag];
+        right_flag++;
+        temp_index++;
+    }
+    while(left &lt;= right)						//将合并好的 temp_array 赋值给 array
+    {
+        array[left] = temp_array[left];
+        left++;
+    }
+}
+
+void split(int * array, int * temp_array, int left, int right)     //分治
+{
+    int mid;
+    if(left &lt; right)            //如果元数组长度大于 1
+    {
+        mid = ( left + right ) / 2;
+        split(array, temp_array, left, mid);
+        split(array, temp_array, mid+1, right);
+        merge(array, temp_array,left,mid,right);
+    }
+
+
+}
+
+void merge_sort(int *array, int len)
+{
+    int * temp_array = (int*)malloc(len * sizeof(int));
+    split(array, temp_array, 0, len-1);
+    free(temp_array);
+}
+
+int main()
+{
+    int a[10] = {1,4,7,2,5,8,3,6,9}, i;
+    merge_sort(a,9);
+    for(i = 0; i &lt; 9; i++)
+        printf(&quot;%d &quot;,a[i]);
+    return 0;
+}
+
+</code></pre>
 
             </div>
           </article>
@@ -167,7 +272,7 @@ int main()
 
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://kcud.github.io//images/avatar.png?v=1654267925556" class="no-responsive avatar">
+    <img src="https://kcud.github.io//images/avatar.png?v=1654318301255" class="no-responsive avatar">
     <div class="text-muted">温故而知新</div>
     <div class="social-container">
       
@@ -265,7 +370,7 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge warning">
           C
         </a>
       
@@ -277,7 +382,7 @@ int main()
           工具
         </a>
       
-        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge ">
+        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge secondary">
           python
         </a>
       
