@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-06-04T04:55:21.557Z</updated>
+    <updated>2022-06-04T05:35:32.378Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -169,6 +169,39 @@ int main()
     merge_sort(a,9);
     for(i = 0; i &lt; 9; i++)
         printf(&quot;%d &quot;,a[i]);
+    return 0;
+}
+
+</code></pre>
+<p>希尔排序</p>
+<pre><code class="language-c">void shell_sort(int *array, int len)
+{
+    int i, j, interval, key_number;
+    interval = len / 2;
+    while(interval &gt; 0)
+    {
+        for(i = interval; i &lt; len; i++)
+        {
+            key_number = array[i];
+            for(j = i; j &gt;= interval &amp;&amp; key_number &lt; array[j-interval]; j=j-interval)
+            {
+                array[j] = array[j-interval];
+            }
+            array[j] = key_number;
+        }
+        interval = interval / 2;
+    }
+}
+
+
+
+int main()
+{
+    int a[10] = {1,4,7,2,5,8,3,6,9}, i;
+    shell_sort(a,9);
+    for(i = 0; i &lt; 9; i++)
+        printf(&quot;%d &quot;,a[i]);
+
     return 0;
 }
 
