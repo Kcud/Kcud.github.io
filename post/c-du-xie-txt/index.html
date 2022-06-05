@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Python pip 时由于目标计算机积极拒绝,无法连接 | 花花的小窝</title>
+<title>c 读写 txt | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,20 +81,77 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>Python pip 时由于目标计算机积极拒绝,无法连接</h1>
+            <h1>c 读写 txt</h1>
             <p class="article-meta">
-              2022-05-04
+              2022-06-05
               
-                <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge secondary">
-                  python
+                <a href="https://kcud.github.io/tag/6fFOd155I/" class="badge secondary">
+                  c
                 </a>
               
             </p>
             
             <div class="post-content">
-              <p>1、按Win+R快捷键，输入regedit，打开注册表编辑器</p>
-<p>2、找到HKEY_CURRENT_USER/Software/Microsoft/Windows/CurrentVersion/Internet Settings</p>
-<p>3、将以 Proxy 打头的键值对（如ProxyEnable，ProxyOverride，ProxyServer等）全部删除</p>
+              <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+/*
+    将字符串写入文本文件
+    file_path 文件路径
+    text 写入内容
+    本方法使用追加写 如果文件不存在则创建
+    正常结束返回 0
+    出现异常返回 -1
+*/
+int write_txt_file(char *file_path, char *text)
+{
+    FILE *txt_file;
+    txt_file = fopen(file_path,&quot;a&quot;);
+    if(txt_file == NULL)
+    {
+        return -1;
+    }
+    fputs(text,txt_file);
+    fclose(txt_file);
+    return 0;
+}
+/*
+    读取文本文件中的字符
+    file_path 文件路径
+    text 读取到的内容
+    请确保路径是正确的
+    正常结束返回 0
+    出现异常返回 -1
+*/
+int read_txt_file(char *file_path, char *text)
+{
+    FILE *txt_file;
+    int i = 0;
+    txt_file = fopen(file_path,&quot;r&quot;);
+    if(txt_file == NULL)
+    {
+        return -1;
+    }
+    while(!feof(txt_file))
+    {
+        text[i] = fgetc(txt_file);
+        i++;
+    }
+    text[i] = '\0';
+    fclose(txt_file);
+    return 0;
+}
+
+
+int main()
+{
+    char text[100];
+    write_txt_file(&quot;D:/test.txt&quot;,&quot;test tex&quot;);
+    read_txt_file(&quot;D:/test.txt&quot;, text);
+    printf(&quot;%s&quot;,text);
+    return 0;
+}
+
+</code></pre>
 
             </div>
           </article>
@@ -105,9 +162,9 @@
               <div class="next">
                 下一篇
               </div>
-              <a href="https://kcud.github.io/post/git/">
+              <a href="https://kcud.github.io/post/pai-xu/">
                 <h3 class="post-title">
-                  git
+                  排序
                 </h3>
               </a>
             </div>
@@ -222,7 +279,7 @@
           c
         </a>
       
-        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge warning">
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
           C
         </a>
       
@@ -230,15 +287,15 @@
           web
         </a>
       
-        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge ">
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge secondary">
           工具
         </a>
       
-        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge success">
+        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge warning">
           python
         </a>
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge success">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
           Gridea
         </a>
       
