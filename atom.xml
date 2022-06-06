@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-06-05T14:42:20.946Z</updated>
+    <updated>2022-06-06T11:41:58.733Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -16,7 +16,8 @@
         <link href="https://kcud.github.io/post/c-du-xie-txt/">
         </link>
         <updated>2022-06-05T14:41:39.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-c">#include &lt;stdio.h&gt;
+        <content type="html"><![CDATA[<p>仅支持西文字符</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 /*
     将字符串写入文本文件
@@ -39,17 +40,18 @@ int write_txt_file(char *file_path, char *text)
     return 0;
 }
 /*
-    读取文本文件中的字符
+    功能获取目标txt文件内容长度
     file_path 文件路径
-    text 读取到的内容
-    请确保路径是正确的
-    正常结束返回 0
-    出现异常返回 -1
+    返回 文件内容长度
+    文件不存在返回 -1
 */
-int read_txt_file(char *file_path, char *text)
+
+
+
+int get_txt_file_context_len(char *file_path)
 {
     FILE *txt_file;
-    int i = 0;
+    int len = 0;
     txt_file = fopen(file_path,&quot;r&quot;);
     if(txt_file == NULL)
     {
@@ -57,24 +59,48 @@ int read_txt_file(char *file_path, char *text)
     }
     while(!feof(txt_file))
     {
-        text[i] = fgetc(txt_file);
-        i++;
+        getc(txt_file);
+        len++;
     }
-    text[i] = '\0';
     fclose(txt_file);
-    return 0;
+    return len;
+}
+
+/*
+    读取文本文件中的字符
+    file_path 文件路径
+    请确保路径是正确的
+    正常结束返回 字符指针
+*/
+char* read_txt_file(char *file_path)
+{
+    char* text;
+    FILE *txt_file;
+    int i = 0, len = 0;
+    txt_file = fopen(file_path,&quot;r&quot;);
+    if(txt_file == NULL)
+    {
+        text = (char*)malloc(sizeof(char));
+        text = '\0';
+        return text;
+    }
+    len = get_txt_file_context_len(file_path);
+    text = (char*)malloc(sizeof(char) * (len+1));
+    fgets(text,len,txt_file);
+    fclose(txt_file);
+    return text;
 }
 
 
+// 演示
 int main()
 {
-    char text[100];
+    char *text;
     write_txt_file(&quot;D:/test.txt&quot;,&quot;test tex&quot;);
-    read_txt_file(&quot;D:/test.txt&quot;, text);
+    text = read_txt_file(&quot;D:/test.txt&quot;);
     printf(&quot;%s&quot;,text);
     return 0;
 }
-
 </code></pre>
 ]]></content>
     </entry>
