@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-06-06T14:04:13.471Z</updated>
+    <updated>2022-06-11T13:17:20.823Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
@@ -10,6 +10,105 @@
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[C 字符串 转 双精度]]></title>
+        <id>https://kcud.github.io/post/c-zi-fu-chuan-zhuan-shuang-jing-du/</id>
+        <link href="https://kcud.github.io/post/c-zi-fu-chuan-zhuan-shuang-jing-du/">
+        </link>
+        <updated>2022-06-06T15:49:41.000Z</updated>
+        <content type="html"><![CDATA[<p>支持 正数、负数、浮点数的转化</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+/*
+    统计字符数组长度
+*/
+int get_string_len(char *str)
+{
+    int len = 0;
+    while(str[len])
+    {
+        len++;
+    }
+    return len;
+}
+/*
+    将无符号部分转为 double
+*/
+double get_number(char *number_string)
+{
+    double result = 0;
+    double decimal = 0;
+    double digit = 0.1;
+    int i = 0;
+    int flag = 1;
+    while(number_string[i])
+    {
+        if(!(number_string[i] &gt;='0' &amp;&amp; number_string[i] &lt;= '9') &amp;&amp; number_string[i] !='.')
+            break;
+        if(number_string[i] != '.' &amp;&amp; flag)
+        {
+            result = result * 10 + (number_string[i]-48);
+        }
+        else
+        {
+                flag = 0;
+        }
+        if(!flag &amp;&amp; number_string[i] !='.')
+        {
+
+            decimal = decimal + digit * (number_string[i]-48);
+            digit = digit *0.1;
+        }
+        
+        i++;
+    }
+    result=result+decimal;
+    return result;
+}
+
+/*
+    将字符数组转为double
+    *number_string 字符指针
+*/
+double value(char *number_string)
+{
+    double result = 0;
+    int len = 0;
+    len = get_string_len(number_string);
+    if(len &lt;= 0)
+        return 0;
+    else if((len == 1 &amp;&amp; number_string[0]&lt;'0' )|| (len == 1 &amp;&amp; number_string[0]&gt;'9'))
+        return 0;
+    else
+    {
+        if(number_string[0] == '-')
+        {
+            result = get_number(&amp;number_string[1])*-1;
+        }
+        else
+        {
+            result = get_number(number_string);
+        }
+    }
+    return result;
+}
+
+
+
+int main()      // 演示代码
+{
+    char number[20];
+    scanf(&quot;%s&quot;,number);
+    while(1)
+    {
+        printf(&quot;%lf\n&quot;,value(number));
+        scanf(&quot;%s&quot;,number);
+    }
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[c 读写 txt]]></title>
         <id>https://kcud.github.io/post/c-du-xie-txt/</id>
@@ -509,379 +608,6 @@ pyinstaller -F -w -i 图标文件路径扩展名为.ico 程序入口的py文件 
 </code></pre>
 <figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/60F87E27BFE84C4F809792A5F0EDF9B1?method=download&amp;shareKey=f854293f5f0449a7ee0e5b11190046bf" alt="" loading="lazy"></figure>
 <p>检查程序所依赖的外部文件 如：图片、配置文件打包目录是否存在</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[项目管理]]></title>
-        <id>https://kcud.github.io/post/xiang-mu-guan-li/</id>
-        <link href="https://kcud.github.io/post/xiang-mu-guan-li/">
-        </link>
-        <updated>2022-03-11T15:14:42.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="第一章-软件项目管理概述">第一章 软件项目管理概述</h1>
-<h3 id="项目">项目</h3>
-<ul>
-<li>定义<br>
-项目是为了创造一个<strong>唯一</strong>的产品或提供一个唯一的服务而进行的<strong>临时性</strong>的努力</li>
-<li>特征
-<ul>
-<li>有明确的目标</li>
-<li>项目之间的活动具有相关性</li>
-<li>限定周期</li>
-<li>有独立性</li>
-<li>资源成本的约束性</li>
-<li>项目的不确定性</li>
-</ul>
-</li>
-<li>特殊性
-<ul>
-<li>逻辑实体</li>
-<li>相互作用的系统</li>
-<li>渐进明细</li>
-<li>变更</li>
-</ul>
-</li>
-</ul>
-<h3 id="实现项目目标的制约因素">实现项目目标的制约因素</h3>
-<ul>
-<li>成本</li>
-<li>工作规范</li>
-<li>进度计划</li>
-<li>客户满意度</li>
-</ul>
-<h3 id="项目管理的五大过程">项目管理的五大过程</h3>
-<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/FC3F79A48FAE4BEFB8DA81DF93023C1F?method=download&amp;shareKey=26afbc8029c8dbbf91597e6fd729278c" alt="五大过程" loading="lazy"></figure>
-<ul>
-<li>初始
-<ul>
-<li>立项</li>
-<li>供应商选择</li>
-<li>合同签署</li>
-</ul>
-</li>
-<li>计划
-<ul>
-<li>范围计划</li>
-<li>时间计划</li>
-<li>成本计划</li>
-<li>质量计划</li>
-<li>风险计划</li>
-<li>沟通计划</li>
-<li>人力计划</li>
-<li>配置管理计划</li>
-<li>合同计划</li>
-</ul>
-</li>
-<li>控制
-<ul>
-<li>范围控制</li>
-<li>时间控制</li>
-<li>成本控制</li>
-<li>质量控制</li>
-<li>风险控制</li>
-<li>沟通控制</li>
-<li>人力控制</li>
-<li>配置管理控制</li>
-<li>合同控制</li>
-</ul>
-</li>
-<li>执行
-<ol>
-<li>需求分析</li>
-<li>概要设计</li>
-<li>详细设计</li>
-<li>编码</li>
-<li>单元测试</li>
-<li>集成测试</li>
-<li>系统测试</li>
-<li>维护</li>
-<li>提交验收</li>
-</ol>
-</li>
-<li>结束
-<ul>
-<li>合同结束</li>
-<li>项目总结</li>
-</ul>
-</li>
-</ul>
-<h3 id="pmbok-10-knowledge-areas">PMBOK 10 Knowledge Areas</h3>
-<ul>
-<li>范围管理	scope mgt</li>
-<li>进度管理 schedule mgt</li>
-<li>成本管理 cost mgt</li>
-<li>质量管理 quality mgt</li>
-<li>干系人管理 stakeholder mgt</li>
-<li>集成管理 integration mgt</li>
-<li>资源管理 resource mgt</li>
-<li>通讯管理 comm mgt</li>
-<li>风险管理 rist mgt</li>
-<li>采购管理 procurement mgt</li>
-</ul>
-<h3 id="敏捷模型">敏捷模型</h3>
-<ul>
-<li>一种灵活的开发方法</li>
-<li>用于应对快速变化的需求的开发方法</li>
-<li>是一种迭代、循序渐进的开发方法</li>
-<li>在敏捷项目重采用仆人式管理方式</li>
-</ul>
-<h4 id="敏捷宣言">敏捷宣言</h4>
-<ul>
-<li><strong>个体和互动</strong>高于流程和工具</li>
-<li><strong>可工作的软件</strong>高于详尽的文档</li>
-<li><strong>用户合作</strong>高于合同谈判</li>
-<li><strong>响应变化</strong>高于遵守计划</li>
-</ul>
-<h4 id="敏捷开发十二原则">敏捷开发十二原则</h4>
-<ol>
-<li>我们最重要的目标，是通过及早和持续不断地交付有价值的软件使客户满意。</li>
-<li>欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。</li>
-<li>经常地交付可工作的软件，相隔几星期或一两个月，倾向于采取较短的周期。</li>
-<li>业务人员和开发人员必须相互合作，项目中的每一天都不例外。</li>
-<li>激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。</li>
-<li>不论团队内外，传递信息效果最好效率也最高的方式是面对面的交谈。</li>
-<li>可工作的软件是进度的首要度量标准。</li>
-<li>敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。</li>
-<li>坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。</li>
-<li>以简洁为本，它是极力减少不必要工作量的艺术。</li>
-<li>最好的架构、需求和设计出自自组织团队。</li>
-<li>团队定期地反思如何能提高成效，并依此调整自身的行为表现。</li>
-</ol>
-<h3 id="软件项目管理过程">软件项目管理过程</h3>
-<ol>
-<li>项目初始
-<ul>
-<li>立项明确</li>
-<li>生存期</li>
-</ul>
-</li>
-<li>项目计划
-<ul>
-<li>范围计划</li>
-<li>时间计划</li>
-<li>成本计划</li>
-<li>质量计划</li>
-<li>风险计划</li>
-<li>沟通计划</li>
-<li>人力计划</li>
-<li>配置管理计划</li>
-<li>合同计划</li>
-</ul>
-</li>
-<li>项目执行控制
-<ul>
-<li>集成计划执行控制</li>
-<li>核心计划执行控制</li>
-<li>辅助计划执行控制</li>
-</ul>
-</li>
-<li>项目结束</li>
-</ol>
-<h1 id="第二章-软件项目确立">第二章 软件项目确立</h1>
-<h3 id="项目评估">项目评估</h3>
-<ol>
-<li>
-<p>项目启动背景</p>
-<ul>
-<li>法律、法规、社会要求</li>
-<li>满足相关的需求（用户）</li>
-<li>执行、变更业务或战略</li>
-<li>创造、改进或修复产品</li>
-</ul>
-</li>
-<li>
-<p>可行性分析</p>
-<ul>
-<li>操作性</li>
-<li>计划</li>
-<li>技术</li>
-<li>社会可行性</li>
-<li>市场可行性</li>
-<li>经济可行性</li>
-<li><strong>战略</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>成本效益评价指标</strong></p>
-<ul>
-<li>
-<p>现金预测</p>
-<ul>
-<li>支出</li>
-<li>收益</li>
-</ul>
-</li>
-<li>
-<p>净利润</p>
-<ul>
-<li>整个生命周期内  <strong>总成本  - 总收入</strong></li>
-</ul>
-</li>
-<li>
-<p>投资回报期</p>
-<ul>
-<li>收回成本所花的时间</li>
-</ul>
-</li>
-<li>
-<p>投资回报率 (ROI)</p>
-<ul>
-<li>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">年</mi><mi mathvariant="normal">利</mi><mi mathvariant="normal">润</mi></mrow><mrow><mi mathvariant="normal">总</mi><mi mathvariant="normal">投</mi><mi mathvariant="normal">资</mi></mrow></mfrac><mo>×</mo><mn>100</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">\frac{平均年利润}{总投资} \times 100\%
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.363em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">总</span><span class="mord cjk_fallback">投</span><span class="mord cjk_fallback">资</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">平</span><span class="mord cjk_fallback">均</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">利</span><span class="mord cjk_fallback">润</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">%</span></span></span></span></span></p>
-</li>
-</ul>
-</li>
-<li>
-<p>净现值(NPV)</p>
-<ul>
-<li>
-<p>r 是贴现率  t  现金流在未来出现的年数</p>
-</li>
-<li>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>N</mi><mi>P</mi><mi>V</mi><mo>=</mo><mfrac><mrow><mi mathvariant="normal">第</mi><mi>t</mi><mi mathvariant="normal">年</mi><mi mathvariant="normal">的</mi><mi>N</mi><mi>P</mi><mi>V</mi><mi mathvariant="normal">值</mi></mrow><mrow><mo>(</mo><mn>1</mn><mo>+</mo><mi>r</mi><msup><mo>)</mo><mi>t</mi></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">NPV = \frac{第t年的NPV值}{(1 + r)^t}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.29633em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7195559999999999em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">第</span><span class="mord mathdefault">t</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">的</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mord cjk_fallback">值</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
-</li>
-</ul>
-</li>
-<li>
-<p>内部回报率(IRR)</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="swot-分析">SWOT 分析</h3>
-<ul>
-<li>优势</li>
-<li>威胁</li>
-<li>劣势</li>
-<li>机遇</li>
-</ul>
-<h3 id="立项">立项</h3>
-<ul>
-<li>目标</li>
-<li>费用</li>
-<li>时间</li>
-</ul>
-<h3 id="项目招标">项目招标</h3>
-<ul>
-<li>甲方招标书定义
-<ul>
-<li><img src="https://note.youdao.com/yws/api/personal/file/82608F868FCC4200A1EFD6731F0C1DE0?method=download&amp;shareKey=5881c812bba6b600c87f9d65cb94952e" alt="招标书定义过程" loading="lazy"></li>
-</ul>
-</li>
-<li>乙方项目分析
-<ul>
-<li><img src="https://note.youdao.com/yws/api/personal/file/C19AEE0EA4804800B24C7C9D0BD9AF6D?method=download&amp;shareKey=97e89c3d1920bcc40d28c7ad9abe0f6b" alt="" loading="lazy"></li>
-</ul>
-</li>
-<li>招标与竞标</li>
-<li>合同签署</li>
-</ul>
-<h3 id="项目章程">项目章程</h3>
-<ul>
-<li>项目的确认</li>
-<li>项目经理的确认</li>
-<li>项目目的的概述</li>
-</ul>
-<h3 id="pmi-人才">PMI 人才</h3>
-<ul>
-<li>技术项目管理</li>
-<li>领导力</li>
-<li>战略和商务管理</li>
-</ul>
-<h1 id="生存期模型">生存期模型</h1>
-<h2 id="变迁">变迁</h2>
-<figure data-type="image" tabindex="4"><img src="https://note.youdao.com/yws/api/personal/file/D086C193278C46BCA4E96323E7558A76?method=download&amp;shareKey=3e906ba31a12c1dde8ee5c0b65248748" alt="" loading="lazy"></figure>
-<h2 id="生存期模型类型">生存期模型类型</h2>
-<ul>
-<li>预测型
-<ul>
-<li>瀑布模型
-<ul>
-<li>需求明确   方案明确</li>
-<li>短期项目</li>
-</ul>
-</li>
-<li>V模型（瀑布的改良）
-<ul>
-<li>需求明确   方案明确</li>
-<li>系统性能、安全等有严格要求等</li>
-</ul>
-</li>
-<li>提前进行大量计划工作，然后一次性执行；执行为一个连续的过程</li>
-</ul>
-</li>
-<li>适应型
-<ul>
-<li>迭代型（原型模型）
-<ul>
-<li>需求不明确   项目复杂性高  项目变更频繁</li>
-<li>允许对未完成的工作进行反馈，改进、修改工作</li>
-</ul>
-</li>
-<li>增量型
-<ul>
-<li>向用户提供各个已完成，可能立即使用的可交付成果</li>
-</ul>
-</li>
-<li>敏捷型
-<ul>
-<li>Scrum模型（代表）</li>
-<li>XP极限编程模型
-<ul>
-<li><img src="https://note.youdao.com/yws/api/personal/file/4CA17B5438B64F65A6887C3D419753A2?method=download&amp;shareKey=71a1e0ede4c8f4f71d7314c3dea02d98" alt="" loading="lazy"></li>
-</ul>
-</li>
-<li>精益模型</li>
-<li>DevOps</li>
-<li>有迭代有增量，便于完善工作，频繁交付</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure data-type="image" tabindex="6"><img src="https://note.youdao.com/yws/api/personal/file/30EAF68BEC084CE58269950AF11628BB?method=download&amp;shareKey=146ff1ed2fe6316de24b388dcdd466c5" alt="" loading="lazy"></figure>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>需求</th>
-<th>活动</th>
-<th>提交</th>
-<th>目标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>预测型</td>
-<td>固定</td>
-<td>整个活动只执行一次</td>
-<td>一次</td>
-<td>成本可管理</td>
-</tr>
-<tr>
-<td>迭代型</td>
-<td>变化</td>
-<td>一直重复执行到正确为止</td>
-<td>一次</td>
-<td>正确的解决方案</td>
-</tr>
-<tr>
-<td>增量型</td>
-<td>变化</td>
-<td>每个特定得的活动执行一次</td>
-<td>频繁小增量提交</td>
-<td>速度</td>
-</tr>
-<tr>
-<td>敏捷型</td>
-<td>变化</td>
-<td>一直重复执行到正确为止</td>
-<td>频繁小增量提交</td>
-<td>通过频繁提交和反馈体现客户价值</td>
-</tr>
-</tbody>
-</table>
 ]]></content>
     </entry>
 </feed>
