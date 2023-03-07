@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>c 读写 txt | 花花的小窝</title>
+<title>redis | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,7 +23,6 @@
 
   </head>
   <body>
-  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
@@ -80,126 +79,40 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <article class="article">
-            <h1>c 读写 txt</h1>
-            <p class="article-meta">
-              2022-06-05
-              
-                <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
-                  C
-                </a>
-              
-            </p>
-            
-            <div class="post-content">
-              <p>仅支持西文字符</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-/*
-    将字符串写入文本文件
-    file_path 文件路径
-    text 写入内容
-    本方法使用追加写 如果文件不存在则创建
-    正常结束返回 0
-    出现异常返回 -1
-*/
-int write_txt_file(char *file_path, char *text)
-{
-    FILE *txt_file;
-    txt_file = fopen(file_path,&quot;a&quot;);
-    if(txt_file == NULL)
-    {
-        return -1;
-    }
-    fputs(text,txt_file);
-    fclose(txt_file);
-    return 0;
-}
-/*
-    功能获取目标txt文件内容长度
-    file_path 文件路径
-    返回 文件内容长度
-    文件不存在返回 -1
-*/
-
-
-
-int get_txt_file_context_len(char *file_path)
-{
-    FILE *txt_file;
-    int len = 0;
-    txt_file = fopen(file_path,&quot;r&quot;);
-    if(txt_file == NULL)
-    {
-        return -1;
-    }
-    while(!feof(txt_file))
-    {
-        getc(txt_file);
-        len++;
-    }
-    fclose(txt_file);
-    return len;
-}
-
-/*
-    读取文本文件中的字符
-    file_path 文件路径
-    请确保路径是正确的
-    正常结束返回 字符指针
-*/
-char* read_txt_file(char *file_path)
-{
-    char* text;
-    FILE *txt_file;
-    int i = 0, len = 0;
-    txt_file = fopen(file_path,&quot;r&quot;);
-    if(txt_file == NULL)
-    {
-        text = (char*)malloc(sizeof(char));
-        text = '\0';
-        return text;
-    }
-    len = get_txt_file_context_len(file_path);
-    text = (char*)malloc(sizeof(char) * (len+1));
-    fgets(text,len,txt_file);
-    fclose(txt_file);
-    return text;
-}
-
-
-// 演示
-int main()
-{
-    char *text;
-    write_txt_file(&quot;D:/test.txt&quot;,&quot;test tex&quot;);
-    text = read_txt_file(&quot;D:/test.txt&quot;);
-    printf(&quot;%s&quot;,text);
-    free(text);     //text是我们申请的内存 使用完释放
-    return 0;
-}
-</code></pre>
-
-            </div>
-          </article>
-        </div>
-        <div class="paper" data-aos="fade-in">
+          <h2 class="current-tag">标签: redis</h2>
           
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://kcud.github.io/post/pai-xu/">
-                <h3 class="post-title">
-                  排序
-                </h3>
-              </a>
-            </div>
-          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://kcud.github.io/post/centos-an-zhuang-redis/">CentOS 安装 Redis</a>
+    </h2>
+    <p class="article-meta">
+      2023-03-07
+      
+        <a href="https://kcud.github.io/tag/EmWMmoWeJ/" class="badge secondary">
+          redis
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      
+    </p>
+    <div class="row">
+      <a href="https://kcud.github.io/post/centos-an-zhuang-redis/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
         </div>
-        
+        <div class="row flex-edges">
+  
+  
+</div>
+
       </div>
-
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://kcud.github.io//images/avatar.png?v=1678179936657" class="no-responsive avatar">
@@ -306,19 +219,19 @@ int main()
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/EmWMmoWeJ/" class="badge ">
+        <a href="https://kcud.github.io/tag/EmWMmoWeJ/" class="badge success">
           redis
         </a>
       
-        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge warning">
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
           C
         </a>
       
-        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge success">
+        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge ">
           web
         </a>
       
-        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge warning">
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge ">
           工具
         </a>
       
@@ -326,7 +239,7 @@ int main()
           python
         </a>
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
           Gridea
         </a>
       
@@ -336,7 +249,6 @@ int main()
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
 
     </div>
 
