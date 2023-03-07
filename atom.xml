@@ -2,14 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://kcud.github.io/</id>
     <title>花花的小窝</title>
-    <updated>2022-08-08T04:26:18.385Z</updated>
+    <updated>2023-03-07T09:05:00.198Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://kcud.github.io/"/>
     <link rel="self" href="https://kcud.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://kcud.github.io/images/avatar.png</logo>
     <icon>https://kcud.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, 花花的小窝</rights>
+    <rights>All rights reserved 2023, 花花的小窝</rights>
+    <entry>
+        <title type="html"><![CDATA[CentOS 安装 Redis]]></title>
+        <id>https://kcud.github.io/post/centos-an-zhuang-redis/</id>
+        <link href="https://kcud.github.io/post/centos-an-zhuang-redis/">
+        </link>
+        <updated>2023-03-07T09:04:37.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="需要的软件">需要的软件</h3>
+<ul>
+<li>VMware</li>
+<li>XFtp(https://www.xshell.com/zh/free-for-home-school/)</li>
+</ul>
+<h3 id="安装centos">安装CentOS</h3>
+<pre><code>//更新Yum
+yum update -y
+//下载wget
+yum install -y wget
+//vim
+yum install -y vim-enhanced
+//net-tools
+yum install -y net-tool.x86_64
+//gcc
+yum install -y gcc tcl
+</code></pre>
+<h3 id="安装redis">安装redis</h3>
+<p>下载Redis</p>
+<p>https://redis.io/download/</p>
+<p>通过xftp上传的centos 打开上传文件夹启动控制台</p>
+<pre><code>tar -zxvf redis-7.0.9.tar.gz
+</code></pre>
+<p>进入解压目录</p>
+<pre><code>make &amp;&amp; make install
+</code></pre>
+<p>打开redis.conf</p>
+<pre><code>bind 0.0.0.0
+daemonize yes
+requirepass 123456
+</code></pre>
+<p>打开端口</p>
+<pre><code>firewall-cmd --add-port=6379/tcp --permanent
+</code></pre>
+<p>启动服务</p>
+<pre><code>redis-server redis.conf //需要在redis.conf所在的目录下使用
+</code></pre>
+<p>查看redis进程</p>
+<pre><code>ps -ef | grep redis
+</code></pre>
+<p>停止redis</p>
+<pre><code>kill -9 redis 进程号
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C 字符串 转 双精度]]></title>
         <id>https://kcud.github.io/post/c-zi-fu-chuan-zhuan-shuang-jing-du/</id>
@@ -584,30 +635,6 @@ stats = Stats()
 stats.ui.show()
 app.exec_()
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python 打包]]></title>
-        <id>https://kcud.github.io/post/python-da-bao/</id>
-        <link href="https://kcud.github.io/post/python-da-bao/">
-        </link>
-        <updated>2022-03-31T02:24:57.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="打包exe">打包exe</h2>
-<pre><code>下载依赖
-</code></pre>
-<pre><code class="language-python">pip install pyinstaller
-</code></pre>
-<pre><code>命令
-</code></pre>
-<pre><code class="language-python">pyinstaller -F -w 程序入口的py文件 #整个打包 不带控制台
-pyinstaller -D -c 程序入口的py文件 #打包成文件夹 带控制台
-pyinstaller -D -c -i 图标文件路径扩展名为.ico 程序入口的py文件 #打包成文件夹 带控制台
-pyinstaller -F -w -i 图标文件路径扩展名为.ico 程序入口的py文件 #打包成exe 不带控制台
-</code></pre>
-<pre><code>问题
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/60F87E27BFE84C4F809792A5F0EDF9B1?method=download&amp;shareKey=f854293f5f0449a7ee0e5b11190046bf" alt="" loading="lazy"></figure>
-<p>检查程序所依赖的外部文件 如：图片、配置文件打包目录是否存在</p>
 ]]></content>
     </entry>
 </feed>

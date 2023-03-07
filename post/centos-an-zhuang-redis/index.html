@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Gridea | 花花的小窝</title>
+<title>CentOS 安装 Redis | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
@@ -79,42 +80,78 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: Gridea</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://kcud.github.io/post/hello-gridea/">Hello Gridea</a>
-    </h2>
-    <p class="article-meta">
-      2018-12-12
-      
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
-          Gridea
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+          <article class="article">
+            <h1>CentOS 安装 Redis</h1>
+            <p class="article-meta">
+              2023-03-07
+              
+            </p>
+            
+            <div class="post-content">
+              <h3 id="需要的软件">需要的软件</h3>
+<ul>
+<li>VMware</li>
+<li>XFtp(https://www.xshell.com/zh/free-for-home-school/)</li>
+</ul>
+<h3 id="安装centos">安装CentOS</h3>
+<pre><code>//更新Yum
+yum update -y
+//下载wget
+yum install -y wget
+//vim
+yum install -y vim-enhanced
+//net-tools
+yum install -y net-tool.x86_64
+//gcc
+yum install -y gcc tcl
+</code></pre>
+<h3 id="安装redis">安装redis</h3>
+<p>下载Redis</p>
+<p>https://redis.io/download/</p>
+<p>通过xftp上传的centos 打开上传文件夹启动控制台</p>
+<pre><code>tar -zxvf redis-7.0.9.tar.gz
+</code></pre>
+<p>进入解压目录</p>
+<pre><code>make &amp;&amp; make install
+</code></pre>
+<p>打开redis.conf</p>
+<pre><code>bind 0.0.0.0
+daemonize yes
+requirepass 123456
+</code></pre>
+<p>打开端口</p>
+<pre><code>firewall-cmd --add-port=6379/tcp --permanent
+</code></pre>
+<p>启动服务</p>
+<pre><code>redis-server redis.conf //需要在redis.conf所在的目录下使用
+</code></pre>
+<p>查看redis进程</p>
+<pre><code>ps -ef | grep redis
+</code></pre>
+<p>停止redis</p>
+<pre><code>kill -9 redis 进程号
+</code></pre>
 
-    </p>
-    <div class="row">
-      <a href="https://kcud.github.io/post/hello-gridea/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/c-zi-fu-chuan-zhuan-shuang-jing-du/">
+                <h3 class="post-title">
+                  C 字符串 转 双精度
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://kcud.github.io//images/avatar.png?v=1678179892027" class="no-responsive avatar">
@@ -221,15 +258,15 @@
     </div>
     <div class="row">
       
-        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge ">
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge success">
           C
         </a>
       
-        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge ">
+        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge secondary">
           web
         </a>
       
-        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge success">
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge secondary">
           工具
         </a>
       
@@ -237,7 +274,7 @@
           python
         </a>
       
-        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge warning">
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge secondary">
           Gridea
         </a>
       
@@ -247,6 +284,7 @@
     Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 
