@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>C 字符串 转 双精度 | 花花的小窝</title>
+<title>QKL | 花花的小窝</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,108 +81,14 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>C 字符串 转 双精度</h1>
+            <h1>QKL</h1>
             <p class="article-meta">
-              2022-06-06
-              
-                <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge warning">
-                  C
-                </a>
+              2023-04-05
               
             </p>
             
             <div class="post-content">
-              <p>支持 正数、负数、浮点数的转化</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-/*
-    统计字符数组长度
-*/
-int get_string_len(char *str)
-{
-    int len = 0;
-    while(str[len])
-    {
-        len++;
-    }
-    return len;
-}
-/*
-    将无符号部分转为 double
-*/
-double get_number(char *number_string)
-{
-    double result = 0;
-    double decimal = 0;
-    double digit = 0.1;
-    int i = 0;
-    int flag = 1;
-    while(number_string[i])
-    {
-        if(!(number_string[i] &gt;='0' &amp;&amp; number_string[i] &lt;= '9') &amp;&amp; number_string[i] !='.')
-            break;
-        if(number_string[i] != '.' &amp;&amp; flag)
-        {
-            result = result * 10 + (number_string[i]-48);
-        }
-        else
-        {
-                flag = 0;
-        }
-        if(!flag &amp;&amp; number_string[i] !='.')
-        {
-
-            decimal = decimal + digit * (number_string[i]-48);
-            digit = digit *0.1;
-        }
-        
-        i++;
-    }
-    result=result+decimal;
-    return result;
-}
-
-/*
-    将字符数组转为double
-    *number_string 字符指针
-*/
-double value(char *number_string)
-{
-    double result = 0;
-    int len = 0;
-    len = get_string_len(number_string);
-    if(len &lt;= 0)
-        return 0;
-    else if((len == 1 &amp;&amp; number_string[0]&lt;'0' )|| (len == 1 &amp;&amp; number_string[0]&gt;'9'))
-        return 0;
-    else
-    {
-        if(number_string[0] == '-')
-        {
-            result = get_number(&amp;number_string[1])*-1;
-        }
-        else
-        {
-            result = get_number(number_string);
-        }
-    }
-    return result;
-}
-
-
-
-int main()      // 演示代码
-{
-    char number[20];
-    scanf(&quot;%s&quot;,number);
-    while(1)
-    {
-        printf(&quot;%lf\n&quot;,value(number));
-        scanf(&quot;%s&quot;,number);
-    }
-    return 0;
-}
-</code></pre>
+              <p>QKL</p>
 
             </div>
           </article>
@@ -193,9 +99,9 @@ int main()      // 演示代码
               <div class="next">
                 下一篇
               </div>
-              <a href="https://kcud.github.io/post/c-du-xie-txt/">
+              <a href="https://kcud.github.io/post/tt/">
                 <h3 class="post-title">
-                  c 读写 txt
+                  TT
                 </h3>
               </a>
             </div>
@@ -318,7 +224,7 @@ int main()      // 演示代码
           redis
         </a>
       
-        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge warning">
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
           C
         </a>
       
@@ -326,11 +232,11 @@ int main()      // 演示代码
           web
         </a>
       
-        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge ">
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge warning">
           工具
         </a>
       
-        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge secondary">
+        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge success">
           python
         </a>
       
