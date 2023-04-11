@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>二分查找 | 花花的小窝</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://kcud.github.io//favicon.ico?v=1681184670589">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://kcud.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://kcud.github.io/">花花的小窝</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>二分查找</h1>
+            <p class="article-meta">
+              2023-04-11
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="二分查找">二分查找</h2>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">复</mi><mi mathvariant="normal">杂</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">：</mi><mi>O</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>N</mi><mo>)</mo><mi mathvariant="normal">幂</mi><mi mathvariant="normal">对</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">二</mi><mi mathvariant="normal">分</mi><mi mathvariant="normal">最</mi><mi mathvariant="normal">坏</mi><mi mathvariant="normal">情</mi><mi mathvariant="normal">况</mi><mi mathvariant="normal">下</mi><mi mathvariant="normal">运</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">次</mi><mi mathvariant="normal">数</mi><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>N</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">果</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">找</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">列</mi><mi mathvariant="normal">表</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">组</mi><mi mathvariant="normal">）</mi><mi mathvariant="normal">长</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">为</mi><mn>8</mn><mo separator="true">,</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>8</mn><mo>=</mo><mn>3</mn><mi mathvariant="normal">。</mi></mrow><annotation encoding="application/x-tex">时间复杂度：O(logN)幂对数时间。二分最坏情况下运行次数log_2N，如果待查找的列表（数组）长度为8,log_28 = 3。
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">复</span><span class="mord cjk_fallback">杂</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">：</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span><span class="mord cjk_fallback">幂</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">二</span><span class="mord cjk_fallback">分</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">坏</span><span class="mord cjk_fallback">情</span><span class="mord cjk_fallback">况</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">次</span><span class="mord cjk_fallback">数</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">待</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">找</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">列</span><span class="mord cjk_fallback">表</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">长</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">为</span><span class="mord">8</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord cjk_fallback">。</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">那</mi><mi mathvariant="normal">这</mi><mi mathvariant="normal">是</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">何</mi><mi mathvariant="normal">计</mi><mi mathvariant="normal">算</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">呢</mi><mi mathvariant="normal">？</mi><msup><mn>2</mn><mn>3</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">那这是如何计算的呢？2^3 = 8
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8641079999999999em;vertical-align:0em;"></span><span class="mord cjk_fallback">那</span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">何</span><span class="mord cjk_fallback">计</span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">呢</span><span class="mord cjk_fallback">？</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span></span></p>
+<pre><code class="language-python">def binary_search(number_list,search_number):
+    lower = 0
+    heigh = len(number_list)-1
+    mid = -1
+    while lower &lt;= heigh:
+        mid = (lower + heigh) // 2
+        if number_list[mid] == search_number:
+            return mid
+        elif number_list[mid] &gt; search_number:
+            heigh = mid -1
+        else:
+            lower = mid +1
+        count += 1
+    return -1
+index = binary_search([1,3,5,6,8,10,12,24],1)
+print(index)
+
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://note.youdao.com/yws/api/personal/file/WEB2a846dadf3bc3540626817f7487ff1e2?method=download&amp;shareKey=592c4b65c757578b7f58a4221b59110e" alt="" loading="lazy"></figure>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://kcud.github.io/post/qkl/">
+                <h3 class="post-title">
+                  QKL
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://kcud.github.io//images/avatar.png?v=1681184670589" class="no-responsive avatar">
+    <div class="text-muted">温故而知新</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/er-fen-cha-zhao/">二分查找</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/qkl/">QKL</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/centos-an-zhuang-redis/">CentOS 安装 Redis</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/c-zi-fu-chuan-zhuan-shuang-jing-du/">C 字符串 转 双精度</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/c-du-xie-txt/">c 读写 txt</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/pai-xu/">排序</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/rest-feng-ge/"> REST 风格</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/cpolar-shi-xian-nei-wang-chuan-tou/">Cpolar 实现内网穿透</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/python-pip-shi-you-yu-mu-biao-ji-suan-ji-ji-ji-ju-jue-wu-fa-lian-jie/">Python pip 时由于目标计算机积极拒绝,无法连接</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://kcud.github.io/post/git/">git</a>
+            </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://kcud.github.io/tag/EmWMmoWeJ/" class="badge success">
+          redis
+        </a>
+      
+        <a href="https://kcud.github.io/tag/VsFLLnYnv/" class="badge secondary">
+          C
+        </a>
+      
+        <a href="https://kcud.github.io/tag/JU27WhGev/" class="badge secondary">
+          web
+        </a>
+      
+        <a href="https://kcud.github.io/tag/GW7lfauUg/" class="badge warning">
+          工具
+        </a>
+      
+        <a href="https://kcud.github.io/tag/Wc646DXBc/" class="badge success">
+          python
+        </a>
+      
+        <a href="https://kcud.github.io/tag/8H_sgt0AE/" class="badge success">
+          Gridea
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://kcud.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
